@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku</title>
+
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
+</head>
+
+<body>
+
+<div id="container">
+    <div id="button">
+        <a data-th-href="@{/game}">New board</a>
+    </div>
+
+    <table data-th-object="${table}">
+        <tr data-th-each="row : ${table.numberFields}">
+            <td data-th-each="field : ${row}">
+                <input type="text" class="sudoku"
+                       data-th-sudoku-field="${field.number}"
+                       data-th-field="*{numberFields[__${rowStat.index}__][__${fieldStat.index}__].displayNumber}"
+                       data-th-oninput="check(this.getAttribute('sudoku-field'), this)"
+                       data-th-style="${field.displayNumber == 0 ? '' : 'font-weight: bold'}"
+                       data-th-classappend="${field.isDarker} ? darker : lighter"
+                       data-th-readonly="${field.displayNumber != 0}"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+
+</html>
