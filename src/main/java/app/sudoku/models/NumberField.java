@@ -41,17 +41,4 @@ public class NumberField {
         isDarker = darker;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof NumberField field) {
-            return this.displayNumber == field.displayNumber;
-        }
-
-        if (obj instanceof Number number) {
-            return this.displayNumber == number.intValue();
-        }
-
-        return false;
-    }
-
 }
